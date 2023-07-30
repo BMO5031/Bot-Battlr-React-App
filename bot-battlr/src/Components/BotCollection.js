@@ -1,40 +1,20 @@
-// BotCollection.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// src/components/BotCollection.js
 
-const BotCollection = () => {
-  const [bots, setBots] = useState([]);
+import React from 'react';
+import BotCard from './BotCard';
 
-//Function to handle enlisting a bot
-const enListBot = (bot) => {
-    //Add the bot to yourbots array in YourBotArmy component
-    YourBotArmy.enListBot(bot);
-}
-  useEffect(() => {
-    // Fetch data from the local JSON server
-    axios.get('http://localhost:3000/bots')
-      .then((response) => {
-        setBots(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching bot data:', error);
-      });
-  }, []);
-
+const BotCollection = ({ bots, onEnlist, onDelete }) => {
   return (
     <div>
-      <h2>Bot Collection</h2>
+      <h2>All Bots</h2>
+      {/* Map through bots and render BotCard for each bot */}
       {bots.map((bot) => (
-        <div key={bot.id}>
-          <h3>{bot.name}</h3>
-          <img src={bot.avatar_url} alt={bot.name} />
-          <button onClick={() => enListBot(bot)}>Enlist</button>
-          {/*Add a button to release the bot */}
-          {/* <button onClick={() => releaseBot(bot)}>Release</button> */}
-
-          {/* Add a button to enlist the bot */}
-          <button>Enlist</button>
-        </div>
+        <BotCard
+          key={bot.id}
+          bot={bot}
+          onEnlist={() => onEnlist(bot)}
+          onDelete={() => onDelete(bot.id)}
+        />
       ))}
     </div>
   );

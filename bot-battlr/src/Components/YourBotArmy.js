@@ -1,31 +1,19 @@
-// YourBotArmy.js
-import React, { useState } from 'react';
+// src/components/YourBotArmy.js
 
-const YourBotArmy = () => {
-  const [yourBots, setYourBots] = useState([]);
+import React from 'react';
+import BotCard from './BotCard';
 
-  // Function to handle enlisting a bot
-  const enlistBot = (bot) => {
-    // Add the bot to yourBots array
-    setYourBots([...yourBots, bot]);
-  };
-
-  // Function to handle releasing a bot
-  const releaseBot = (bot) => {
-    // Remove the bot from yourBots array
-    setYourBots(yourBots.filter((b) => b.id !== bot.id));
-  };
-
+const YourBotArmy = ({ armyBots, onRelease }) => {
   return (
     <div>
       <h2>Your Bot Army</h2>
-      {yourBots.map((bot) => (
-        <div key={bot.id}>
-          <h3>{bot.name}</h3>
-          <img src={bot.avatar_url} alt={bot.name} />
-          {/* Add a button to release the bot */}
-          <button onClick={() => releaseBot(bot)}>Release</button>
-        </div>
+      {/* Map through armyBots and render BotCard for each enlisted bot */}
+      {armyBots.map((bot) => (
+        <BotCard
+          key={bot.id}
+          bot={bot}
+          onRelease={() => onRelease(bot)}
+        />
       ))}
     </div>
   );
