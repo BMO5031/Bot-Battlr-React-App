@@ -1,10 +1,10 @@
-// src/components/BotCard.js
-
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const BotCard = ({ bot, onEnlist, onRelease, onDelete }) => {
   return (
-    <div>
+    <div className="bot-card">
       {/* Display bot information */}
       <img src={bot.avatar_url} alt={bot.name} />
       <h3>{bot.name}</h3>
@@ -16,7 +16,11 @@ const BotCard = ({ bot, onEnlist, onRelease, onDelete }) => {
       {/* Show different buttons based on the context (BotCollection or YourBotArmy) */}
       {onEnlist && <button onClick={onEnlist}>Enlist</button>}
       {onRelease && <button onClick={onRelease}>Release</button>}
-      {onDelete && <button onClick={onDelete}>Delete</button>}
+      {onDelete && (
+        <button onClick={() => onDelete(bot.id)}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+      )}
     </div>
   );
 };
