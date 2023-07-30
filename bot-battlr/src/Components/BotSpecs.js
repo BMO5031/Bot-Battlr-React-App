@@ -1,14 +1,14 @@
-// src/components/BotSpecs.js
+// BotSpecs.js
 
 import React from 'react';
-import BotCard from './BotCard';
 
-const BotSpecs = ({ bot, onEnlist, onBack }) => {
+const BotSpecs = ({ bot, goBackToList, enlistBot }) => {
   return (
-    <div>
-      <button onClick={onBack}>Back to List</button>
-      <BotCard bot={bot} />
-      <button onClick={onEnlist}>Enlist</button>
+    <div className="bot-specs">
+      <h2>{bot.name} - {bot.class}</h2>
+      {/* Display other detailed information about the bot */}
+      <button onClick={goBackToList}>Back to List</button>
+      <button onClick={() => enlistBot(bot.id)}>Enlist</button>
     </div>
   );
 };

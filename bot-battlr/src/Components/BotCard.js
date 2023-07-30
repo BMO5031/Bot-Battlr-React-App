@@ -1,18 +1,33 @@
-import React from 'react';
+// BotCard.js
 
-const BotCard = ({ bot, buttonText, buttonAction }) => {
-  const { id, name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot;
+import React, { useState } from 'react';
+import BotSpecs from './BotSpecs';
+
+const BotCard = ({ bot, buttonText, buttonAction, dischargeAction }) => {
+  const [showSpecs, setShowSpecs] = useState(false);
+
+  const toggleSpecs = () => {
+    setShowSpecs(!showSpecs);
+  };
 
   return (
     <div className="bot-card">
-      <img src={avatar_url} alt={name} />
-      <h3>{name}</h3>
-      <p>Health: {health}</p>
-      <p>Damage: {damage}</p>
-      <p>Armor: {armor}</p>
-      <p>Class: {bot_class}</p>
-      <p>Catchphrase: {catchphrase}</p>
-      <button onClick={() => buttonAction(bot)}>{buttonText}</button>
+      <h3>{bot.name}</h3>
+      <img src={bot.avatar_url} alt={`Avatar of ${bot.name}`} />
+      <p>Health: {bot.health}</p>
+      <p>Damage: {bot.damage}</p>
+      <p>Armor: {bot.armor}</p>
+      {/* Display other basic information about the bot */}
+      {showSpecs ? (
+        <BotSpecs
+          bot={bot}
+          goBackToList={toggleSpecs}
+          enlistBot={buttonAction}
+        />
+      ) : (
+        <button onClick={toggleSpecs}>{buttonText}</button>
+      )}
+      {dischargeAction && <button onClick={() => dischargeAction(bot.id)}>Discharge</button>}
     </div>
   );
 };
