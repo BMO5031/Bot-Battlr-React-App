@@ -5,6 +5,11 @@ import axios from 'axios';
 const BotCollection = () => {
   const [bots, setBots] = useState([]);
 
+//Function to handle enlisting a bot
+const enListBot = (bot) => {
+    //Add the bot to yourbots array in YourBotArmy component
+    YourBotArmy.enListBot(bot);
+}
   useEffect(() => {
     // Fetch data from the local JSON server
     axios.get('http://localhost:3000/bots')
@@ -23,6 +28,10 @@ const BotCollection = () => {
         <div key={bot.id}>
           <h3>{bot.name}</h3>
           <img src={bot.avatar_url} alt={bot.name} />
+          <button onClick={() => enListBot(bot)}>Enlist</button>
+          {/*Add a button to release the bot */}
+          {/* <button onClick={() => releaseBot(bot)}>Release</button> */}
+
           {/* Add a button to enlist the bot */}
           <button>Enlist</button>
         </div>
