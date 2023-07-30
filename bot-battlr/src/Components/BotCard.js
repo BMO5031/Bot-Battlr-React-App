@@ -1,26 +1,18 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const BotCard = ({ bot, onEnlist, onRelease, onDelete }) => {
+const BotCard = ({ bot, buttonText, buttonAction }) => {
+  const { id, name, health, damage, armor, bot_class, catchphrase, avatar_url } = bot;
+
   return (
     <div className="bot-card">
-      {/* Display bot information */}
-      <img src={bot.avatar_url} alt={bot.name} />
-      <h3>{bot.name}</h3>
-      <p>Health: {bot.health}</p>
-      <p>Damage: {bot.damage}</p>
-      <p>Armor: {bot.armor}</p>
-      <p>Class: {bot.bot_class}</p>
-      <p>Catchphrase: {bot.catchphrase}</p>
-      {/* Show different buttons based on the context (BotCollection or YourBotArmy) */}
-      {onEnlist && <button onClick={onEnlist}>Enlist</button>}
-      {onRelease && <button onClick={onRelease}>Release</button>}
-      {onDelete && (
-        <button onClick={() => onDelete(bot.id)}>
-          <FontAwesomeIcon icon={faTimes} />
-        </button>
-      )}
+      <img src={avatar_url} alt={name} />
+      <h3>{name}</h3>
+      <p>Health: {health}</p>
+      <p>Damage: {damage}</p>
+      <p>Armor: {armor}</p>
+      <p>Class: {bot_class}</p>
+      <p>Catchphrase: {catchphrase}</p>
+      <button onClick={() => buttonAction(bot)}>{buttonText}</button>
     </div>
   );
 };

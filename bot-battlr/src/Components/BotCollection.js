@@ -1,20 +1,11 @@
-// src/components/BotCollection.js
-
 import React from 'react';
 import BotCard from './BotCard';
 
-const BotCollection = ({ bots, onEnlist, onDelete }) => {
+const BotCollection = ({ bots, enlistBot }) => {
   return (
-    <div>
-      <h2>All Bots</h2>
-      {/* Map through bots and render BotCard for each bot */}
+    <div className="bot-collection">
       {bots.map((bot) => (
-        <BotCard
-          key={bot.id}
-          bot={bot}
-          onEnlist={() => onEnlist(bot)}
-          onDelete={() => onDelete(bot.id)}
-        />
+        <BotCard key={bot.id} bot={bot} buttonText="Enlist" buttonAction={enlistBot} />
       ))}
     </div>
   );

@@ -1,18 +1,16 @@
-// src/components/YourBotArmy.js
-
 import React from 'react';
 import BotCard from './BotCard';
 
-const YourBotArmy = ({ armyBots, onRelease }) => {
+const YourBotArmy = ({ enlistedBots, releaseBot, dischargeBot }) => {
   return (
-    <div>
-      <h2>Your Bot Army</h2>
-      {/* Map through armyBots and render BotCard for each enlisted bot */}
-      {armyBots.map((bot) => (
+    <div className="your-bot-army">
+      {enlistedBots.map((bot) => (
         <BotCard
           key={bot.id}
           bot={bot}
-          onRelease={() => onRelease(bot)}
+          buttonText="Release"
+          buttonAction={releaseBot}
+          dischargeAction={dischargeBot}
         />
       ))}
     </div>
