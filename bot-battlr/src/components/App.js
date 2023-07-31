@@ -7,6 +7,8 @@ import { fetchBots } from '../services/botService';
 
 const App = () => {
   const [bots, setBots] = useState([]);
+  const [yourBotArmy, setYourBotArmy] = useState([]);
+
 
   useEffect(() => {
     fetchBots()
@@ -18,7 +20,7 @@ const App = () => {
     <div className="app">
       <h1>Welcome to Bot Battlr</h1>
       <BotCollection bots={bots} />
-      <YourBotArmy />
+      <YourBotArmy yourBotArmy={yourBotArmy} />
     </div>
   );
 };
