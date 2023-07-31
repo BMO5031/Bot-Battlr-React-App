@@ -1,27 +1,37 @@
 // components/BotCard.js
 
-import React from 'react';
+import React, { useState } from 'react';
+import BotSpecs from './BotSpecs';
 
-const BotCard = ({ bot, enlistBot, dischargeBot }) => {
+const BotCard = ({ bot, enlistBot }) => {
+  const [showDetails, setShowDetails] = useState(false);
+
   const handleEnlist = () => {
     enlistBot(bot.id);
   };
 
-  const handleDischarge = () => {
-    dischargeBot(bot.id);
+  const handleViewDetails = () => {
+    setShowDetails(true);
+  };
+
+  const handleGoBack = () => {
+    setShowDetails(false);
   };
 
   return (
     <div className="bot-card">
-      <img src={bot.avatar_url} alt={bot.name} />
-      <h3>{bot.name}</h3>
-      <p>Health: {bot.health}</p>
-      <p>Damage: {bot.damage}</p>
-      <p>Armor: {bot.armor}</p>
-      {dischargeBot ? (
-        <button onClick={handleDischarge}>Discharge</button>
+      {showDetails ? (
+        <BotSpecs bot={bot} enlistBot={handleEnlist} goBack={handleGoBack} />
       ) : (
-        <button onClick={handleEnlist}>Enlist</button>
+        <>
+          <img src={bot.avatar_url} alt={bot.name} />
+          <h3>{bot.name}</h3>
+          <p>Health: {bot.health}</p>
+          <p>Damage: {bot.damage}</p>
+          <p>Armor: {bot.armor}</p>
+          <button onClick={handleViewDetails}>View Details</button>
+          <button onClick={handleEnlist}>Enlist</button>
+        </>
       )}
     </div>
   );
