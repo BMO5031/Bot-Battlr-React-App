@@ -1,16 +1,24 @@
-import React from 'react';
+// components/App.js
+
+import React, { useState, useEffect } from 'react';
 import BotCollection from './BotCollection';
 import YourBotArmy from './YourBotArmy';
-import BotSpecs from './BotSpecs';
-import SortBar from './SortBar';
+import { fetchBots } from '../services/botService';
 
 const App = () => {
+  const [bots, setBots] = useState([]);
+
+  useEffect(() => {
+    fetchBots()
+      .then((data) => setBots(data))
+      .catch((error) => console.error('Error fetching bots:', error));
+  }, []);
+
   return (
-    <div>
-      <BotCollection />
+    <div className="app">
+      <h1>Welcome to Bot Battlr</h1>
+      <BotCollection bots={bots} />
       <YourBotArmy />
-      <BotSpecs />
-      <SortBar />
     </div>
   );
 };
