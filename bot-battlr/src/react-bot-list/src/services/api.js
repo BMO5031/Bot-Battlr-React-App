@@ -1,17 +1,16 @@
-// src/services/api.js
 import axios from "axios";
 
-const api = axios.create({
-    baseURL: "http://localhost:3000",
-});
+const BASE_URL = "http://localhost:3000"; // The JSON Server URL
 
-const BASE_URL = "http://localhost:3000"; //The JSON Server URL
+const api = axios.create({
+  baseURL: BASE_URL,
+});
 
 export const getAllBots = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/bots`);
+    const response = await api.get("/bots");
     console.log(response.data);
-     // Add this line to check the fetched data
+    // Add this line to check the fetched data
     return response.data;
   } catch (error) {
     console.error("Error fetching bot data:", error);

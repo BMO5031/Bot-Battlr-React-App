@@ -1,11 +1,7 @@
-/* BotProfile.css */
-.bot-profile {
-    /* ... existing styles ... */
-    cursor: pointer;
-  }
-  
-  .bot-profile.selected {
-    background-color: #f5b957;
-    border: 2px solid #e39d23;
+/* BotCollection.css */
+.bot-collection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
   }
   
