@@ -27,10 +27,26 @@ const App = () => {
     setYourBotArmy(updatedArmy);
   };
 
+  // Function to discharge a bot (delete from frontend and backend)
+  const dischargeBot = async (botId) => {
+    try {
+      // Delete the bot from the backend
+      await fetch(`http://localhost:8001/bots/${botId}`, {
+        method: 'DELETE',
+      });
+
+      // Remove the bot from yourBotArmy state (frontend)
+      const updatedArmy = yourBotArmy.filter((bot) => bot.id !== botId);
+      setYourBotArmy(updatedArmy);
+    } catch (error) {
+      console.error('Error discharging bot:', error);
+    }
+  };
+
   return (
     <div className="app">
       <h1>Welcome to Bot Battlr</h1>
-      <BotCollection bots={bots} enlistBot={enlistBot} />
+      <BotCollection bots={bots} enlistBot={enlistBot} yourBotArmy={yourBotArmy} />
       <YourBotArmy yourBotArmy={yourBotArmy} releaseBot={releaseBot} />
     </div>
   );
