@@ -1,5 +1,6 @@
 // BotCollection.js
 import React, { useEffect, useState } from "react";
+import api from '../services/api'; // Add this import
 import { getAllBots } from "../services/api";
 import BotProfile from "./BotProfile";
 import YourBotArmy from "./YourBotArmy";
@@ -34,6 +35,19 @@ const BotCollection = () => {
     setSelectedBots((prevSelectedBots) => prevSelectedBots.filter((selectedBot) => selectedBot.id !== bot.id));
   };
 
+   // Function to discharge a bot from both backend and frontend
+   const handleBotDischarge = async (bot) => {
+    try {
+      // Discharge the bot from the backend
+      await api.delete(`/bots/${bot.id}`);
+
+      // Remove the bot from the selectedBots state in frontend
+      setSelectedBots((prevSelectedBots) => prevSelectedBots.filter((selectedBot) => selectedBot.id !== bot.id));
+    } catch (error) {
+      console.error('Error discharging bot:', error);
+    }
+  };
+
   return (
     <div>
       <div className="bot-collection">
@@ -42,7 +56,7 @@ const BotCollection = () => {
         ))}
       </div>
       {/* Pass the selectedBots state as props to the YourBotArmy component */}
-      <YourBotArmy selectedBots={selectedBots} onRelease={handleBotRelease} />
+      <YourBotArmy selectedBots={selectedBots} onRelease={handleBotRelease} onDischarge={handleBotDischarge} />
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import React from "react";
 import './YourBotArmy.css'; // Import the CSS file
 
-const YourBotArmy = ({ selectedBots, onRelease }) => {
+const YourBotArmy = ({ selectedBots, onRelease, onDischarge }) => {
   const handleBotRelease = (bot) => {
     onRelease(bot);
   };
@@ -17,6 +17,7 @@ const YourBotArmy = ({ selectedBots, onRelease }) => {
               <img src={bot.avatar_url} alt={bot.name} />
               <span>{bot.name}</span>
               <button onClick={() => handleBotRelease(bot)}>Release</button> {/* Add a release button */}
+              <button className="discharge-button" onClick={() => onDischarge(bot)}>Discharge</button>
             </li>
           ))}
         </ul>

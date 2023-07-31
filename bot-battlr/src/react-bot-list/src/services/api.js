@@ -1,6 +1,10 @@
 // src/services/api.js
 import axios from "axios";
 
+const api = axios.create({
+    baseURL: "http://localhost:3000",
+});
+
 const BASE_URL = "http://localhost:3000"; //The JSON Server URL
 
 export const getAllBots = async () => {
@@ -14,3 +18,5 @@ export const getAllBots = async () => {
     throw error;
   }
 };
+
+export default api;
