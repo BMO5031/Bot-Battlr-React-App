@@ -9,18 +9,29 @@ const App = () => {
   const [bots, setBots] = useState([]);
   const [yourBotArmy, setYourBotArmy] = useState([]);
 
-
   useEffect(() => {
     fetchBots()
       .then((data) => setBots(data))
       .catch((error) => console.error('Error fetching bots:', error));
   }, []);
 
+  // Function to enlist a bot
+  const enlistBot = (botId) => {
+    const botToAdd = bots.find((bot) => bot.id === botId);
+    setYourBotArmy([...yourBotArmy, botToAdd]);
+  };
+
+  // Function to release a bot
+  const releaseBot = (botId) => {
+    const updatedArmy = yourBotArmy.filter((bot) => bot.id !== botId);
+    setYourBotArmy(updatedArmy);
+  };
+
   return (
     <div className="app">
       <h1>Welcome to Bot Battlr</h1>
-      <BotCollection bots={bots} />
-      <YourBotArmy yourBotArmy={yourBotArmy} />
+      <BotCollection bots={bots} enlistBot={enlistBot} />
+      <YourBotArmy yourBotArmy={yourBotArmy} releaseBot={releaseBot} />
     </div>
   );
 };
