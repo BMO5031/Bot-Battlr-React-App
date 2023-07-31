@@ -1,12 +1,13 @@
+// components/SortBar.js
+
 import React from 'react';
 
-const SortBar = () => {
-  // Add your code for the SortBar component here
-
+const SortBar = ({ onSortByHealth, onSortByDamage, onSortByArmor }) => {
   return (
-    <div>
-      <h2>Sort Bots</h2>
-      {/* Your code for sorting bots goes here */}
+    <div className="sort-bar">
+      <button onClick={onSortByHealth}>Sort by Health</button>
+      <button onClick={onSortByDamage}>Sort by Damage</button>
+      <button onClick={onSortByArmor}>Sort by Armor</button>
     </div>
   );
 };

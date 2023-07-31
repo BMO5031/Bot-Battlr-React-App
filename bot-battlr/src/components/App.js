@@ -33,7 +33,7 @@ const App = () => {
   const dischargeBot = async (botId) => {
     try {
       // Delete the bot from the backend
-      await fetch(`http://localhost:8001/bots/${botId}`, {
+      await fetch(`http://localhost:3000/bots/${botId}`, {
         method: 'DELETE',
       });
 
