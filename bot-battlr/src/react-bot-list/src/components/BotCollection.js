@@ -29,6 +29,11 @@ const BotCollection = () => {
     console.log("Selected Bots:", selectedBots);
   };
 
+  // Function to handle bot release
+  const handleBotRelease = (bot) => {
+    setSelectedBots((prevSelectedBots) => prevSelectedBots.filter((selectedBot) => selectedBot.id !== bot.id));
+  };
+
   return (
     <div>
       <div className="bot-collection">
@@ -37,7 +42,7 @@ const BotCollection = () => {
         ))}
       </div>
       {/* Pass the selectedBots state as props to the YourBotArmy component */}
-      <YourBotArmy selectedBots={selectedBots} />
+      <YourBotArmy selectedBots={selectedBots} onRelease={handleBotRelease} />
     </div>
   );
 };
