@@ -1,0 +1,11 @@
+/* BotProfile.css */
+.bot-profile {
+    /* ... existing styles ... */
+    cursor: pointer;
+  }
+  
+  .bot-profile.selected {
+    background-color: #f5b957;
+    border: 2px solid #e39d23;
+  }
+  

@@ -1,0 +1,41 @@
+/* YourBotArmy.css */
+.your-bot-army {
+    background-color: #1b0707;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .your-bot-army h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .your-bot-army ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .your-bot-army li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .your-bot-army li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .your-bot-army li span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .your-bot-army p {
+    font-size: 16px;
+    font-style: italic;
+  }
+  
