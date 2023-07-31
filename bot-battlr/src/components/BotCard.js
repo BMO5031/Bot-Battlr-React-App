@@ -2,7 +2,15 @@
 
 import React from 'react';
 
-const BotCard = ({ bot, enlistBot }) => {
+const BotCard = ({ bot, enlistBot, dischargeBot }) => {
+  const handleEnlist = () => {
+    enlistBot(bot.id);
+  };
+
+  const handleDischarge = () => {
+    dischargeBot(bot.id);
+  };
+
   return (
     <div className="bot-card">
       <img src={bot.avatar_url} alt={bot.name} />
@@ -10,7 +18,11 @@ const BotCard = ({ bot, enlistBot }) => {
       <p>Health: {bot.health}</p>
       <p>Damage: {bot.damage}</p>
       <p>Armor: {bot.armor}</p>
-      <button onClick={() =>  enlistBot(bot.id)}>Enlist</button>
+      {dischargeBot ? (
+        <button onClick={handleDischarge}>Discharge</button>
+      ) : (
+        <button onClick={handleEnlist}>Enlist</button>
+      )}
     </div>
   );
 };
