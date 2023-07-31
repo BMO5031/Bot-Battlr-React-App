@@ -1,43 +1,23 @@
-import React, { useEffect, useState } from 'react';
+// components/YourBotArmy.js
 
-const YourBotArmy = () => {
-  const [enlistedBots, setEnlistedBots] = useState([]);
+import React from 'react';
 
-  useEffect(() => {
-    // Fetch enlisted bots from the backend and update the state
-    fetch('http://localhost:8001/enlisted-bots')
-      .then((response) => response.json())
-      .then((data) => {
-        setEnlistedBots(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching enlisted bots:', error);
-      });
-  }, []);
-
-  const handleReleaseBot = (bot) => {
-    // Your code for releasing the bot goes here
-  };
-
-  const handleDischargeBot = (bot) => {
-    // Your code for discharging the bot forever goes here
-  };
-
+const YourBotArmy = ({ yourBotArmy, releaseBot }) => {
   return (
-    <div>
+    <div className="your-bot-army">
       <h2>Your Bot Army</h2>
-      <ul>
-        {enlistedBots.map((bot) => (
-          <li key={bot.id}>
+      <div className="bot-list">
+        {yourBotArmy.map((bot) => (
+          <div key={bot.id} className="bot-card">
+            <img src={bot.avatar_url} alt={bot.name} />
             <h3>{bot.name}</h3>
             <p>Health: {bot.health}</p>
             <p>Damage: {bot.damage}</p>
-            {/* Your code for rendering enlisted bots goes here */}
-            <button onClick={() => handleReleaseBot(bot)}>Release</button>
-            <button onClick={() => handleDischargeBot(bot)}>Discharge</button>
-          </li>
+            <p>Armor: {bot.armor}</p>
+            <button onClick={() => releaseBot(bot.id)}>Release</button>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
