@@ -1,0 +1,23 @@
+.sort-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .sort-bar p {
+    margin-right: 10px;
+  }
+  
+  .sort-bar button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sort-bar button:hover {
+    background-color: #e0e0e0;
+  }
+  

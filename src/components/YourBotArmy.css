@@ -1,0 +1,29 @@
+/* YourBotArmy.css */
+.your-bot-army {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.your-bot-army h2 {
+  text-align: center;
+}
+
+.your-bot-army p {
+  text-align: center;
+}
+
+.your-bot-army ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.your-bot-army li {
+  margin: 10px;
+}
+
+.your-bot-army button {
+  background-color: #f44336;
+}

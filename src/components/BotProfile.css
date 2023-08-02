@@ -1,0 +1,36 @@
+/* BotProfile.css */
+.bot-profile {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .bot-profile h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .bot-profile p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .bot-profile img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  /* BotProfile.css */
+.bot-profile {
+    /* ... existing styles ... */
+    cursor: pointer;
+  }
+  
+  .bot-profile.selected {
+    background-color: #f5b957;
+    border: 2px solid #e39d23;
+  }
+  
