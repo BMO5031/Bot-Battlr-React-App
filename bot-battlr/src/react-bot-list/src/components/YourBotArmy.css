@@ -1,56 +1,29 @@
 /* YourBotArmy.css */
 .your-bot-army {
-    background-color: #e2cdcd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
-  }
-  
-  .your-bot-army h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .your-bot-army ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .your-bot-army li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .your-bot-army li img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .your-bot-army li span {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .your-bot-army p {
-    font-size: 16px;
-    font-style: italic;
-  }
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-  .your-bot-army button {
-    margin-left: auto;
-    padding: 8px 16px;
-    background-color: #5e5656;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .your-bot-army button:hover {
-    background-color: #e0d8d9;
-  }
-  
+.your-bot-army h2 {
+  text-align: center;
+}
+
+.your-bot-army p {
+  text-align: center;
+}
+
+.your-bot-army ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.your-bot-army li {
+  margin: 10px;
+}
+
+.your-bot-army button {
+  background-color: #f44336;
+}

@@ -1,13 +1,11 @@
 import React from 'react';
-import './SortBar.css';
 
-const SortBar = ({ sortBy }) => {
+const SortBar = ({ sortBots }) => {
   return (
     <div className="sort-bar">
-      <p>Sort By:</p>
-      <button onClick={() => sortBy('health')}>Health</button>
-      <button onClick={() => sortBy('damage')}>Damage</button>
-      <button onClick={() => sortBy('armor')}>Armor</button>
+      <button onClick={() => sortBots('health')}>Sort by Health</button>
+      <button onClick={() => sortBots('damage')}>Sort by Damage</button>
+      <button onClick={() => sortBots('armor')}>Sort by Armor</button>
     </div>
   );
 };

@@ -1,27 +1,17 @@
-// BotSpecs.js
 import React from 'react';
-import './BotSpecs.css';
 
-const BotSpecs = ({ bot, onBackClick, onEnlistClick }) => {
+const BotSpecs = ({ bot, enlistBot }) => {
   return (
     <div className="bot-specs">
-      <img src={bot.avatar_url} alt={bot.name} className="bot-avatar" />
-      <h2>{bot.name}</h2>
-      <p>
-        <strong>Class:</strong> {bot.bot_class}
-      </p>
-      <p>
-        <strong>Health:</strong> {bot.health}
-      </p>
-      <p>
-        <strong>Damage:</strong> {bot.damage}
-      </p>
-      <p>
-        <strong>Armor:</strong> {bot.armor}
-      </p>
-      <p>{bot.catchphrase}</p>
-      <button onClick={onBackClick}>Back to List</button>
-      <button onClick={() => onEnlistClick(bot)}>Enlist</button>
+      <img src={bot.avatar_url} alt={bot.name} />
+      <h3>{bot.name}</h3>
+      <p>Health: {bot.health}</p>
+      <p>Damage: {bot.damage}</p>
+      <p>Armor: {bot.armor}</p>
+      <p>Class: {bot.bot_class}</p>
+      <button onClick={() => enlistBot(bot.id)}>Enlist</button>
+      {/* Add a button to go back to the list view */}
+      <button onClick={() => window.location.reload()}>Go Back</button>
     </div>
   );
 };
